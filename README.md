@@ -31,8 +31,7 @@
 ## 実体関連図とその説明
 
 以下に各機能を実現するにあたって必要な実体や属性をまとめたER図を掲載する．
-![スクリーンショット 2023-10-06 12 50 58](https://github.com/Mntisgod/isle4RhythmGame/assets/83445886/d9269a2f-5936-4279-a28b-ce83a76af819)
-
+![スクリーンショット 2023-10-06 13 47 43](https://github.com/Mntisgod/isle4RhythmGame/assets/83445886/6ef7a7af-6087-4f89-9472-ea7454ea3553)
 
 各実体集合，関連集合についての説明は以下に記す．
 
@@ -84,5 +83,12 @@ playerとは多対多の関係にある．(ユーザー*譜面の数通りの組
 作曲者の名前を格納する．
 - file_path (string)
 再生元の音源へのパス．
+
+#### その他属性
+playerとchartの2つの実態に依存した属性である．
+- favorites [int (chart_id)]
+各playerの好みの譜面を登録することができる．chart_idを格納することで対応．
+- best_score [int]
+playerの最高得点を記録する．
 
 以上の機能を搭載した音楽ゲームを作ろうと思う．
