@@ -11,11 +11,70 @@
 \西暦
 \date{提出日: \today} % コンパイル時の日付が自動で挿入される
 \maketitle
+\tableofcontents
+\clearpage
 \section{システム概要}
+ 今回作成したwebアプリケーション{\bf「KuBeat」} プロジェクトについて、概要をまとめる．現状と今後の完成目標を同時に記述する．
+\subsection{システムの目的}
+  本アプリケーションは、音楽ゲームアプリとSNSアプリを組み合わせたものである．
+  音楽ゲームを通して、ユーザー同士の交流を促進することで、ユーザーの満足度を高める。
 \section{モデル設計}
-\subsection{実態関連図}
-\subsection{関係スキーマ}
+\subsection{実態関連図兼関係スキーマ}
+\subsubsection{現状}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth,bb=0 0 800 600]{img/myer.png}
+  \caption{ER図}
+\end{figure}
+\subsubsection{予定}
 \section{機能一覧}
+\subsection{現況}  
+現状、以下の機能が完成している．
+\subsubsection*{SNS機能: 命名 Pakutter}
+\begin{itemize}
+  \item ユーザー管理機能(管理者権限)
+  \begin{itemize}
+    \item ユーザー登録機能
+    \item ユーザー情報編集機能
+    \item ユーザー情報削除機能
+    \item ユーザー情報一覧表示機能
+  \end{itemize}
+  \item 投稿機能(ユーザー権限)
+  \item グループ作成機能(ユーザー権限)
+  \item いいね、リツイート機能(ユーザー権限)
+\end{itemize}
+以下、各機能のインタフェースを示す。
+\subsubsection{ユーザー管理機能}
+djangoのadminサイトを利用して実装した．
+\begin{figure}[htbp]
+  \centering
+  % \includegraphics[width=0.8\textwidth,bb=0 0 800 600]{img/admin.png}
+  \caption{ユーザー管理画面}
+\end{figure}
+
+\subsubsection{投稿機能}
+
+\begin{figure}[htbp]
+  \centering
+  % \includegraphics[width=0.8\textwidth,bb=0 0 800 600]{img/admin.png}
+  \caption{ユーザー管理画面}
+\end{figure}
+
+\subsection{今後の完成目標}
+現状完成している機能に加えて，以下の機能を実装することで、音楽ゲームアプリとして完成させる．
+\subsubsection*{音楽ゲーム機能: 命名 KuBeat}
+\begin{itemize}
+  \item スコアデータ(CR)管理機能
+  \item 楽曲データ管理(CRUD)機能
+  \item ランキング取得機能
+  \item (そもそも音楽ゲームができるようにする)
+\end{itemize}
+\subsubsection*{SNS機能: 命名　Pakutter}
+\begin{itemize}  
+  \item リザルト投稿機能(ゲーム画面と連携)
+  \item アカウント作成機能(ユーザー権限)
+\end{itemize}
+
 \section{工夫点}
 
 \section{感想}
