@@ -75,3 +75,4 @@ crashlytics-build.properties
 web/myer.dot
 web/myer.png
 report/out/*
+game/*

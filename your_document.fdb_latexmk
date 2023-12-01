@@ -1,0 +1,9 @@
+# Fdb version 3
+["dvipdf"] 0 "your_document.dvi" "your_document.pdf" "your_document" 0
+  "your_document.dvi" 0 -1 0 "latex"
+  (generated)
+  "your_document.pdf"
+["latex"] 1701428414 "your_document.tex" "your_document.dvi" "your_document" 1701428432
+  (generated)
+  "your_document.dvi"
+  "your_document.log"
