@@ -1,0 +1,24 @@
+{% extends 'timeline/layout.html' %}
+
+{% block title %}Post{% endblock %}
+
+{% block header %}
+<h1 class="display-4 text-primary">Tw○et</h1>
+<p  class="caption">※Please chose a group to which you post.</p>
+{% if messages %}
+<ul class="list-group">
+    {% for message in messages %}
+    <li{% if message.tags %} class="list-group-item {{ message.tags }}"
+        {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'post' %}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+<button class="btn btn-primary">Twee○</button>
+</form>
+{% endblock %}

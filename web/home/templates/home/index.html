@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <style>
+    #navbar {
+        background-color: #3498db; /* Set your desired background color */
+        padding: 10px;
+        color: #ffffff; /* Set your desired text color */
+    }
+
+    #navbar a {
+        color: #ffffff; /* Set your desired link color */
+        margin-right: 15px; /* Adjust spacing between links */
+        text-decoration: none;
+    }
+
+    #navbar a:hover {
+        color: #ffffff; /* Set your desired hover color */
+        text-decoration: underline;
+    }
+
+    #content {
+        padding: 20px;
+    }
+</style>  
+</head>
+<body>
+<div id="navbar">
+  {% include 'home/navi.html' %}
+</div>
+<div id="content">
+  <h1>home</h1>
+  <h2>KuBeatへ、ようこそ___</h2>
+  <td>KuBeatは、完全無料無課金の就活対策用webGL音楽ゲームです。やる気(時間と体力)が出たら完成します。できたらあそんでね</td>
+  <a class="nav-link" aria-current="page" href="https://harca.dojin.com/">やりたかったこと</a>
+  <td>↑こいつのせいで時間が取れませんでした</td>
+</div>
+</body>

@@ -6,13 +6,12 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
-from .models import Message, Friend, Group, Good
-from .forms import GroupCheckForm, GroupSelectForm,\
+from model_collection.user_data.models import Message, Friend, Group, Good
+from .forms import GroupCheckForm, GroupSelectForm, \
     FriendsForm, CreateGroupForm, PostForm
 
+
 # indexのビュー関数
-
-
 @login_required(login_url='/admin/login/')
 def index(request, page=1):
     # publicのuserを取得
@@ -50,7 +49,7 @@ def index(request, page=1):
         'contents': messages,
         'check_form': checkform,
     }
-    return render(request, 'sns/index.html', params)
+    return render(request, 'timeline/index.html', params)
 
 
 @login_required(login_url='/admin/login/')
@@ -126,7 +125,7 @@ def groups(request):
         'create_form': createform,
         'group': sel_group,
     }
-    return render(request, 'sns/groups.html', params)
+    return render(request, 'timeline/groups.html', params)
 
 # Friendの追加処理
 
@@ -140,7 +139,7 @@ def add(request):
     if add_user == request.user:
         messages.info(request, "自分自身をFriendに追加することは\
                 できません。")
-        return redirect(to='/sns')
+        return redirect(to='/timeline')
     # publicの取得
     (public_user, public_group) = get_public()
     # add_userのFriendの数を調べる
@@ -161,7 +160,7 @@ def add(request):
     # メッセージを設定
     messages.success(request, add_user.username + ' を追加しました！\
         groupページに移動して、追加したFriendをメンバーに設定して下さい。')
-    return redirect(to='/sns')
+    return redirect(to='/timeline')
 
 # グループの作成処理
 
@@ -174,7 +173,7 @@ def creategroup(request):
     gp.title = request.user.username + 'の' + request.POST['group_name']
     gp.save()
     messages.info(request, '新しいグループを作成しました。')
-    return redirect(to='/sns/groups')
+    return redirect(to='/timeline')
 
 # メッセージのポスト処理
 
@@ -199,7 +198,7 @@ def post(request):
         msg.save()
         # メッセージを設定
         messages.success(request, '新しいメッセージを投稿しました！')
-        return redirect(to='/sns')
+        return redirect(to='/timeline')
 
     # GETアクセス時の処理
     else:
@@ -210,7 +209,7 @@ def post(request):
         'login_user': request.user,
         'form': form,
     }
-    return render(request, 'sns/post.html', params)
+    return render(request, 'timeline/post.html', params)
 
 # 投稿をシェアする
 
@@ -242,7 +241,7 @@ def share(request, share_id):
         share_msg.save()
         # メッセージを設定
         messages.success(request, 'メッセージをシェアしました！')
-        return redirect(to='/sns')
+        return redirect(to='/timeline')
 
     # 共通処理
     form = PostForm(request.user)
@@ -251,7 +250,7 @@ def share(request, share_id):
         'form': form,
         'share': share,
     }
-    return render(request, 'sns/share.html', params)
+    return render(request, 'timeline/share.html', params)
 
 # goodボタンの処理
 
@@ -266,7 +265,7 @@ def good(request, good_id):
     # ゼロより大きければ既にgood済み
     if is_good > 0:
         messages.success(request, '既にメッセージにはGoodしています。')
-        return redirect(to='/sns')
+        return redirect(to='/timeline')
 
     # Messageのgood_countを１増やす
     good_msg.good_count += 1
@@ -278,7 +277,7 @@ def good(request, good_id):
     good.save()
     # メッセージを設定
     messages.success(request, 'メッセージにGoodしました！')
-    return redirect(to='/sns')
+    return redirect(to='/timeline')
 
 
 # これ以降は普通の関数==================
